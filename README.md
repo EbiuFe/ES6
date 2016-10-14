@@ -13,7 +13,7 @@
 ・Generator、ジェネレータ関数
 
 【第4回】村上（10/12）
-・important、export
+・import、export
 
 【第5回】藍葉（10/19）
 ・classの拡張
