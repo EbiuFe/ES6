@@ -82,25 +82,25 @@ ins.open();
 ※設計図はドアは開けられないけど、インスタンスは実際に建っているのでドアが開けられる
 →つまり、インスタンス化（実体化）させないとclass作っても使えないよ！ということ。
 
-ただし例外もあります。＝静的メソッドと呼ばれるもの。
+ただし例外もあります。＝静的メソッドと呼ばれるもの。  
 これはclassに直接アクセスして使用できる仕様にもできる。（ふふ...
 
 
 
 ■参考
-[google style guide 日本語訳](https://www38.atwiki.jp/aias-jsstyleguide2/pages/13.html)
-[google js styleguide](https://google.github.io/styleguide/javascriptguide.xml)
-[スタイルガイドや命名規則記事まとめ](http://qiita.com/kitsuki00/items/79428876391d0179a2ca)
+[google style guide 日本語訳](https://www38.atwiki.jp/aias-jsstyleguide2/pages/13.html)  
+[google js styleguide](https://google.github.io/styleguide/javascriptguide.xml)  
+[スタイルガイドや命名規則記事まとめ](http://qiita.com/kitsuki00/items/79428876391d0179a2ca)  
 
 
 
 ## ポリモーフィズムについて
-ポリモーフィズム=***呼び出す側のコードを共通化する技術***
+ポリモーフィズム=***呼び出す側のコードを共通化する技術***  
 →同じメソッドで、呼び出すオブジェクトによって違うものを実行出来る仕組みのこと。
-> 「鳴く」というメソッドを呼び出したら
-> 犬「ワン」・猫「にゃー」・羊「め〜」とそれぞれに応じた返り値がくること
+> 「鳴く」というメソッドを呼び出したら  
+> 犬「ワン」・猫「にゃー」・羊「め〜」とそれぞれに応じた返り値がくること  
 
-→メソッドの部分は、共通して使える形にしないとだめ。（一つだけ引数だ必要とかそういうのだめ）
+→メソッドの部分は、共通して使える形にしないとだめ。（一つだけ引数だ必要とかそういうのだめ）  
 →それが継承と結びつく。継承はポリモーフィズムでまとめてさらに、似たようなクラスの共通部分をまとめること。
 ```
 class Animal {
@@ -161,8 +161,8 @@ class Sheep {
 
 
 ### 継承を使う意味
-- 何回も似たようなclassを作るのは非効率的。
-- メソッドやプロパティを親クラスにまとめることが出来るので見通しが良くなる
+- 何回も似たようなclassを作るのは非効率的。  
+- メソッドやプロパティを親クラスにまとめることが出来るので見通しが良くなる  
 - 共通部分を親クラスに定義しておき、必要に応じて、差分があれば子クラスでオーバーライドできる
 継承することで、自分で定義しなくても親クラスのプロパティやメソッドを使えるようになる。
 
@@ -181,7 +181,7 @@ var hogetan = new Hoge("FUGA");
 hogetan.piyo();
 ```
 ## constructorとは？
-インスタンスが作られたときに自動的に最初に実行されるメソッド。
+インスタンスが作られたときに自動的に最初に実行されるメソッド。  
 constructorに何も値を入れていないと、初期化される。
 
 
@@ -215,9 +215,9 @@ child.piyo();
 
 ■参考文献
 -　-　-　-　-　-　-　-　-　-　-
-http://tdak.hateblo.jp/entry/20140406/1396773476
-http://www.yunabe.jp/docs/javascript_class_es6.html
-http://qiita.com/M-ISO/items/bed1be20c8eaab1c7762
+http://tdak.hateblo.jp/entry/20140406/1396773476  
+http://www.yunabe.jp/docs/javascript_class_es6.html    
+http://qiita.com/M-ISO/items/bed1be20c8eaab1c7762  
 
 
 ## 継承を使う上での注意点
@@ -226,5 +226,5 @@ http://qiita.com/M-ISO/items/bed1be20c8eaab1c7762
 
 
 ## どういうときにclassを使うべきか
-- 変数がやたらめったら多い。
+- 変数がやたらめったら多い。  
 →classを使えば、どこに所属している変数かが一目瞭然なので、迷子の変数がなくなる。
