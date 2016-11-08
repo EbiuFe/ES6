@@ -12,10 +12,11 @@ promise.then(function(result){
 });
 ```
 
+  
 ### コールバックによる非同期処理との違い
 - コードの書き方が決まっている
 - 常に非同期処理が行われる = 同期・非同期処理の混在による問題が起きない
-
+  
 ### promiseに定義されたAPI
 1. コンストラクタ
 2. インスタンスメソッド
@@ -42,7 +43,7 @@ promise.then(undefined, onRejected)
 // .catch()はIE8以下未対応（["catch"]を使えば使える）
 ```
 
-▲ まとめ
+▲ （１）と（２）をまとめると
 ```
 var promise = new Promise(function(resolve, reject){})
 
@@ -56,15 +57,14 @@ promise.then(function onFulfilled(value){
 （３）スタティックメソッド
 = promiseが持つ静的メソッド
 例）Promise.all()　Promise.resolve()　など
-
+  
 ### promiseの状態
-promiseオブジェクトには、3つの状態が存在する
 1. Fulfilled = resolveした時
 2. Rejected = rejectした時
 3. Pending = 初期状態（1,2のどちらでもない）
 
 ▲ promiseオブジェクトの状態がPendingからFulfilled/Rejectedに変化した時に呼ばれる関数を登録するのが.then()メソッド。つまり、実行されるのは一度だけ。
-
+  
 ## promiseの書き方
 ```
 var promise = new Promise(function(resolve){
@@ -74,7 +74,7 @@ promise.then(function(value){
   console.log(value); // 111
 });
 ```
-
+  
 ### Promise.resolve()
 - 上記記述をショートカット
 ```
@@ -94,7 +94,7 @@ Promise.resolve($.ajax({
 ```
 ▲ jQuery.ajax()はDeferred Objectのメソッドで.then()が使える
   Promise.resolve()によってpromiseオブジェクトに変換することで、ES6 Promisesの機能を使えるようにしている
-
+  
 ### Promise.reject()
 ```
 var promise = new Promise(function(resolve, reject){
@@ -110,7 +110,7 @@ Promise.reject(new Error('エラー')).catch(function(error){
   console.error(error);
 });
 ```
-
+  
 ### promiseのメソッドチェーン
 * 順番
 ```
@@ -161,11 +161,11 @@ promise
     console.error(error);
   });
 ```
-
+  
 ## promiseと配列
 Promise.allとPromise.raceは、promiseオブジェクトの配列を受け取り、
 その配列に入っているpromiseオブジェクト全てを見て次の処理を実行することができる。
-
+  
 ### Promise.all
 = promiseオブジェクト配列のオブジェクトが、すべてFulfilledになったら.then()を実行する。
 
@@ -189,7 +189,7 @@ Promise.all([
   console.log('result = ' + value);
 });
 ```
-
+  
 ### Promise.race
 = promiseオブジェクト配列のオブジェクトが、ひとつでもFulfilledになったら.then()を実行する。
 
@@ -213,7 +213,7 @@ Promise.race([
   console.log('result = ' + value);
 });
 ```
-
+  
 ## エラー処理として使うなら、then()？catch()？
 ```
 promise.catch() == promise.then(undefined, onRejected)
@@ -245,9 +245,8 @@ taskB(function(){
 ```
 * taskA → 第一因数（onFulfilled）内でエラーが起きても、onRejectedに行かずエラー処理が動かない
 * taskB → .then(throwError)内で起きたエラーをキャッチできる
-
-
+  
 ■ 参考文献
 -　-　-　-　-　-　-　-　-　-　-
-[JavaScript Promiseの本](http://azu.github.io/promises-book/)
-[今更だけどPromise入門](http://qiita.com/koki_cheese/items/c559da338a3d307c9d88)
+[JavaScript Promiseの本](http://azu.github.io/promises-book/)  
+[今更だけどPromise入門](http://qiita.com/koki_cheese/items/c559da338a3d307c9d88)  
