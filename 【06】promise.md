@@ -12,7 +12,6 @@ promise.then(function(result){
 });
 ```
 
-  
 ### コールバックによる非同期処理との違い
 - コードの書き方が決まっている
 - 常に非同期処理が行われる = 同期・非同期処理の混在による問題が起きない
@@ -83,7 +82,7 @@ Promise.resolve(111).then(function(value){
 });
 ```
 
-- thenableなオブジェクトをpromiseオブジェクトに変換
+- thenableなオブジェクトをpromiseオブジェクトに変換  
 （thenable = .thenというメソッドを持っているオブジェクト）
 ```
 Promise.resolve($.ajax({
@@ -92,7 +91,7 @@ Promise.resolve($.ajax({
   console.log(value);
 });
 ```
-▲ jQuery.ajax()はDeferred Objectのメソッドで.then()が使える
+▲ jQuery.ajax()はDeferred Objectのメソッドで.then()が使える  
   Promise.resolve()によってpromiseオブジェクトに変換することで、ES6 Promisesの機能を使えるようにしている
   
 ### Promise.reject()
@@ -129,16 +128,11 @@ function onRejected(error){
 
 var promise = Promise.resolve();
 promise
-  .then(taskA)
-  .then(taskB)
+  .then(taskA)  // success=taskB, error=onRejected
+  .then(taskB)  // success=taskC, error=onRejected
   .catch(onRejected)
-  .then(taskC);
+  .then(taskC);  // success=完了, error=キャッチしてもらえない
 ```
-
-promise - taskA - taskB - taskC - 完了
-                |       |         ∟ catchしてもらえない
-                |       ∟ onRejected
-                ∟ onRejected
 
 * 値渡し
 ```
@@ -163,7 +157,7 @@ promise
 ```
   
 ## promiseと配列
-Promise.allとPromise.raceは、promiseオブジェクトの配列を受け取り、
+Promise.allとPromise.raceは、promiseオブジェクトの配列を受け取り、  
 その配列に入っているpromiseオブジェクト全てを見て次の処理を実行することができる。
   
 ### Promise.all
@@ -246,7 +240,7 @@ taskB(function(){
 * taskA → 第一因数（onFulfilled）内でエラーが起きても、onRejectedに行かずエラー処理が動かない
 * taskB → .then(throwError)内で起きたエラーをキャッチできる
   
-■ 参考文献
--　-　-　-　-　-　-　-　-　-　-
+■ 参考文献  
+-　-　-　-　-　-　-　-　-　-　-  
 [JavaScript Promiseの本](http://azu.github.io/promises-book/)  
 [今更だけどPromise入門](http://qiita.com/koki_cheese/items/c559da338a3d307c9d88)  
