@@ -21,7 +21,7 @@ promise.then(function(result){
 2. インスタンスメソッド
 3. スタティックメソッド
 
-（１）コンストラクタ
+（１）コンストラクタ  
 = promiseは、コンストラクタからインスタンスとなるオブジェクトを生成して処理している。
 ```
 var promise = new Promise(function(resolve, reject){})
@@ -29,7 +29,7 @@ var promise = new Promise(function(resolve, reject){})
   // Promise : コンストラクタ
 ```
 
-（２）インスタンスメソッド
+（２）インスタンスメソッド  
 = コールバック関数を登録するためのメソッド。主なものは .then() と .catch()。
 ```
 promise.then(onFulfilled, onRejected)
@@ -53,8 +53,8 @@ promise.then(function onFulfilled(value){
 });
 ```
 
-（３）スタティックメソッド
-= promiseが持つ静的メソッド
+（３）スタティックメソッド  
+= promiseが持つ静的メソッド  
 例）Promise.all()　Promise.resolve()　など
   
 ### promiseの状態
